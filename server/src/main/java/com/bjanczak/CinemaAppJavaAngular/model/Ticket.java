@@ -3,6 +3,7 @@ package com.bjanczak.CinemaAppJavaAngular.model;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "ticket")
@@ -14,6 +15,7 @@ public class Ticket {
     private String userName;
     private String userLastName;
     private int seat;
+    private LocalDate purchaseDate;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -40,5 +42,10 @@ public class Ticket {
     @Column(name = "seat")
     public int getSeat() {
         return seat;
+    }
+
+    @Column(name = "purchase_date")
+    public LocalDate getPurchaseDate() {
+        return purchaseDate;
     }
 }

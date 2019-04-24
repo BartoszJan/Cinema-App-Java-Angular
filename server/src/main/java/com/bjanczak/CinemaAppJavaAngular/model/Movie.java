@@ -14,9 +14,11 @@ public class Movie {
     private Long id;
     private String title;
     private LocalDate year;
+    private String description;
     private int duration;
     private String director;
     private List<Showing> showings;
+    private String imageSource;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,6 +36,11 @@ public class Movie {
         return year;
     }
 
+    @Column(name = "description")
+    public String getDescription() {
+        return description;
+    }
+
     @Column(name = "duration")
     public int getDuration() {
         return duration;
@@ -47,5 +54,10 @@ public class Movie {
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE, orphanRemoval = true, mappedBy = "movie")
     public List<Showing> getShowings() {
         return showings;
+    }
+
+    @Column(name = "image_source")
+    public String getImageSource() {
+        return imageSource;
     }
 }
