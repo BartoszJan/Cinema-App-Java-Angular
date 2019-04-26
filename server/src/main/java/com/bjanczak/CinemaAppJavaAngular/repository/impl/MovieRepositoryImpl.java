@@ -22,8 +22,10 @@ public class MovieRepositoryImpl implements MovieRepositoryCustom {
         QMovie qMovie = QMovie.movie;
 
         JPAQueryFactory queryFactory = new JPAQueryFactory(em);
-        return queryFactory.select(new QMovieDto(qMovie.id, qMovie.title, qMovie.year, qMovie.duration,
-                qMovie.description, qMovie.director, qMovie.imageSource))
+        QMovieDto header = new QMovieDto(qMovie.id, qMovie.title, qMovie.year, qMovie.duration,
+                qMovie.description, qMovie.director, qMovie.imageSource);
+
+        return queryFactory.select(header)
                 .from(qMovie)
                 .fetch();
     }
